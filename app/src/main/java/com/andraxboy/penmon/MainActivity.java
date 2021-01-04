@@ -14,6 +14,7 @@ import java.io.OutputStream;
 
 public class MainActivity extends AppCompatActivity {
     Dialog myDialog;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
         copysh();
         myDialog = new Dialog(this);
     }
+    
     final String path = "/data/data/com.andraxboy.penmon/cache/";
     final String Name = "iwpriv";
+    
     public void copyiw(){
         try {
             OutputStream myOutput = new FileOutputStream(path + Name);
@@ -40,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
             myInput.close();
             myOutput.flush();
             myOutput.close();
-
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -52,19 +54,21 @@ public class MainActivity extends AppCompatActivity {
         myDialog.show();
     }
 
-
     public void showpopup3(View v) {
         myDialog.setContentView(R.layout.popup3);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
+    
     public void showpopup2(View v) {
         myDialog.setContentView(R.layout.popup2);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
+    
     final String path2 = "/data/data/com.andraxboy.penmon/cache/";
     final String Name2 = "on.sh";
+    
     public void copysh(){
         try {
             OutputStream myOutput = new FileOutputStream(path2 + Name2);
@@ -77,10 +81,11 @@ public class MainActivity extends AppCompatActivity {
             myInput.close();
             myOutput.flush();
             myOutput.close();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
     public void startone(View view) {
         try{Runtime.getRuntime().exec("su -c ip link set wlan0 down");
             Runtime.getRuntime().exec("su -c echo 4 > /sys/module/wlan/parameters/con_mode");
@@ -94,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
             btn4.setEnabled(false);
             btn2.setEnabled(true);
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }}
+    
     public void offone(View view) {
         try{Runtime.getRuntime().exec("su -c ip link set wlan0 down;;su -c ip link set wlan0 up");
             Runtime.getRuntime().exec("su -c echo 0 > /sys/module/wlan/parameters/con_mode");
@@ -110,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
             btn3.setEnabled(true);
             btn2.setEnabled(false);
             btn4.setEnabled(false);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }}
+    
     public void starttwo(View view) {
         try{
             Runtime.getRuntime().exec("chmod +x /data/data/com.andraxboy.penmon/cache/on.sh");
@@ -127,8 +132,7 @@ public class MainActivity extends AppCompatActivity {
             btn1.setEnabled(false);
             btn2.setEnabled(false);
             btn4.setEnabled(true);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }}
 }
